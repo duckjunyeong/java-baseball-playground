@@ -1,6 +1,5 @@
 package study;
 
-import org.assertj.core.internal.bytebuddy.implementation.bind.annotation.Argument;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import GameResult.GameResult;
+import Model.GameResult;
 
 public class getResultTest {
 
@@ -26,6 +25,20 @@ public class getResultTest {
 
     assertThat(gameResult.getStrike()).isEqualTo(result.get("스트라이크"));
     assertThat(gameResult.getBall()).isEqualTo(result.get("볼"));
+  }
+
+  @ParameterizedTest
+  @MethodSource("gameResult")
+  void 정답을_맞췄을때(GameResult result){
+    assertThat(result.isAllStrike()).isTrue();
+  }
+
+  static Stream<GameResult> gameResult(){
+    GameResult result = new GameResult();
+    result.setStrike(3);
+    return Stream.of(
+        result
+    );
   }
 
 

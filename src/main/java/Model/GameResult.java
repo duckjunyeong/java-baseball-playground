@@ -1,4 +1,4 @@
-package GameResult;
+package Model;
 
 import java.util.List;
 
@@ -22,8 +22,21 @@ public class GameResult {
     this.ball = ball;
   }
 
+  public boolean isAllStrike(){
+    return strike == 3;
+  }
+
+
+  public void setStrike(int strike){
+    this.strike += strike;
+  }
+
   public int getStrike(){
     return strike;
+  }
+
+  public void setBall(int ball){
+    this.ball += ball;
   }
 
   public int getBall(){

@@ -8,7 +8,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import Computer.Computer;
+import Model.Computer;
 public class ComputerTest {
 
   @Test
