@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Computer {
+
+  private List<Integer> numbers;
   public static final Random random = new Random();
 
   public List<Integer> generateRandomNumber(){
@@ -14,6 +16,7 @@ public class Computer {
       int randomNumber = random.nextInt(9) + 1;
       addList(list, randomNumber);
     }
+    numbers = list;
     return list;
   }
 
@@ -21,5 +24,9 @@ public class Computer {
     if (!list.contains(randomNumber)){
       list.add(randomNumber);
     }
+  }
+
+  public List<Integer> getNumbers(){
+    return numbers;
   }
 }

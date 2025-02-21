@@ -6,8 +6,12 @@ import java.util.Set;
 
 public class Validator {
 
-  public boolean isValidInput(List<Integer> list){
+  public static boolean isValidInput(List<Integer> list){
     return list.size() == 3 && !isDuplicate(list) && isValidNumberRange(list);
+  }
+
+  public static boolean isValidRetryInput(String str){
+    return str.length() == 1 && (str.charAt(0) == '1' || str.charAt(0) == '2');
   }
 
   public static boolean isDuplicate(List<Integer> list){
