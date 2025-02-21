@@ -6,20 +6,29 @@ public class GameResult {
   private int strike;
   private int ball;
 
+  public void resetScore(){
+    strike = 0;
+    ball = 0;
+  }
+
   public void getResult(List<Integer> computerNumber, List<Integer> userNumber){
-    int strike = 0;
-    int ball = 0;
-
+    resetScore();
     for (int i = 0; i < computerNumber.size(); i++){
-      if (computerNumber.get(i) == userNumber.get(i)){
-        ++strike;
-      }else if (computerNumber.contains(userNumber.get(i))){
-        ++ball;
-      }
+      increaseStrike(computerNumber.get(i), userNumber.get(i));
+      increaseBall(computerNumber.get(i), userNumber.get(i), computerNumber);
     }
+  }
 
-    this.strike = strike;
-    this.ball = ball;
+  public void increaseStrike(int computerNumber, int userNumber){
+    if (computerNumber == userNumber){
+      ++strike;
+    }
+  }
+
+  public void increaseBall(int computerNumber, int userNumber, List<Integer> computer){
+    if (computerNumber != userNumber && computer.contains(userNumber)){
+      ++ball;
+    }
   }
 
   public boolean isAllStrike(){
