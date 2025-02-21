@@ -1,11 +1,11 @@
 package View;
 
 import Model.GameResult;
-
+import Constant.Message;
 public class OutputView {
 
   public void printGameStart(){
-    System.out.println("게임을 시작합니다.");
+    System.out.println(Message.GAME_START);
   }
 
   public void printGameResult(GameResult result){
@@ -21,14 +21,18 @@ public class OutputView {
     System.out.println(outputStr);
   }
 
+  public void printGameRetry(){
+    System.out.println(Message.GAME_RETRY);
+  }
+
+  public void printGameEnd(){
+    System.out.println(Message.GAME_END);
+  }
+
   public String addStr(String str, int num){
     if (num == 0){
       return "";
     }
     return num + str + " ";
-  }
-
-  public void printGameEnd(){
-    System.out.println("게임이 시작되었습니다.");
   }
 }

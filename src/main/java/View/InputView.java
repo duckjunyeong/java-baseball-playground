@@ -1,5 +1,6 @@
 package View;
 
+import Constant.ExceptionMessage;
 import Model.Validator;
 
 import java.util.ArrayList;
@@ -16,7 +17,15 @@ public class InputView {
     if (Validator.isValidInput(arrayUserInput)){
       return arrayUserInput;
     }
-    throw new IllegalArgumentException("사용자의 입력이 잘 못 되었습니다.");
+    throw new IllegalArgumentException(ExceptionMessage.USER_CORRECT_INPUT);
+  }
+
+  public int readUserRetryInput(){
+    String userInput = scanner.nextLine();
+    if (Validator.isValidRetryInput(userInput)){
+      return Integer.parseInt(userInput);
+    }
+    throw new IllegalArgumentException(ExceptionMessage.USER_RETRY_INPUT);
   }
 
   public List<Integer> convertToList(String str){
@@ -28,16 +37,5 @@ public class InputView {
     return list;
   }
 
-  public boolean isDone(){
-    System.out.println("game is Done, if you want retry push 1, or not 2");
-    String input = scanner.nextLine();
-    if (!Validator.isValidRetryInput(input)){
-      throw new IllegalArgumentException("사용자의 입력이 잘 못 되었습니다.");
-    }
-    if (input.charAt(0) == '1'){
-      return false;
-    }
-    return true;
-  }
 
 }
